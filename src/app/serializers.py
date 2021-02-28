@@ -6,7 +6,17 @@ from .models import Car
 from .models import Rate
 
 
+class ManufacturerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturer
+        fields = ["name", ]
+
+
 class CarSerializer(serializers.ModelSerializer):
+    manufacturer = ManufacturerSerializer()
+
     class Meta:
         model = Car
         fields = "__all__"
+
+
