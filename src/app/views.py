@@ -7,6 +7,7 @@ from .models import Car
 from .models import Rate
 from .serializers import CarSerializer
 from .utils import carExists
+import django.db.utils as dbError
 
 
 class AddCar(APIView):
@@ -46,3 +47,19 @@ class DeleteCar(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
 
+class AddRate(APIView):
+
+    def post(self, request):
+        car_id = request.data["car_id"]
+        rating = request.data["rating"]
+
+        try:
+            car = Car.objects.get(pk=car_id)
+            rate = Rate(car=car, rating=rating)
+            try:
+                rate.save()
+            except dbError.IntegrityError:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_201_CREATED)
+        except Car.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
