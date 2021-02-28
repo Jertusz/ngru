@@ -1,11 +1,9 @@
+# 3rd party
 from django.db import models
 
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
-
-    def __unicode__(self):
-        self.name
 
 
 # This is the model, but decided to rename it because of different meaning in django
@@ -25,4 +23,3 @@ class Rate(models.Model):
                 name="Rating is between 1 and 5",
             )
         ]
-
