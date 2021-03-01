@@ -3,6 +3,17 @@ Recruitment task
 To properly run the project poetry is highly recommended. Instructions
 on how to do it are available at the bottom of README.
 
+## Used packages
+requests - connection to external api  
+djangorestframework - used to provide basic behaviour to all REST stuff  
+flake8 - code formatting
+isort - autoformatting imports
+black - reformatting code (fixing line breaks, quotes)
+gunicorn - used to reduce strain on server  
+pytest - used for writing test  
+psycopg2 - used because of postgres db being used by app  
+python-decouple - separation of sensitive info, easier split between dev and prod env
+
 
 ### Example .env 
 

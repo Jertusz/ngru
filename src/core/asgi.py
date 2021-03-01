@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 import os
 
 # 3rd party
-import django
 from django.core.asgi import get_asgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.production")
-django.setup()
 application = get_asgi_application()

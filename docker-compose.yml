@@ -14,7 +14,7 @@ services:
   api:
     container_name: ngru_api
     build: ./src/
-    command: ["gunicorn", "core.asgi:application", "-k", "uvicorn.workers.UvicornWorker", "-w", "2", "-b", ":8010"]
+    command: ["gunicorn", "-w", "2", "-b", "0.0.0.0:8010", "core.wsgi"]
     restart: unless-stopped
     depends_on:
       - postgres
