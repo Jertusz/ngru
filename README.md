@@ -41,17 +41,19 @@ Any unapplied migrations?
 
 ## Django tests
 
-`python manage.py test`
+Run `pytest .`. The results will be listed in the terminal.  
+To run only a category of tests append: `-m` and specify which tests to run.
+
+- unit
+- integration
+
+You can combine the categories with `or` keyword ex. `pytest -m "unit or integration" .`
 
 ## Code quality
 
 `flake8` - check stylistics  
 `black .` - reformat all  
 `isort .` - sort import accordingly to the project's rules
-
-# OpenAPI
-
-Available at /swagger/
 
 # Poetry
 

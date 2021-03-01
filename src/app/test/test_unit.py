@@ -1,17 +1,17 @@
+# 3rd party
 import pytest
-import requests
 from django.test import TestCase
 
-from app.utils import car_exists
-from app.utils import fix_response
+# Local
 from app.models import Car
 from app.models import Manufacturer
 from app.serializers import CarSerializer
+from app.utils import car_exists
+from app.utils import fix_response
 
 
 @pytest.mark.unit
 class TestUtils(TestCase):
-
     def test_check_for_existing_car_in_external_api(self):
         manufacturer = "Volkswagen"
         model = "Golf"
@@ -36,4 +36,3 @@ class TestUtils(TestCase):
 
         assert "manufacturer" not in fixed_response.keys()
         assert fixed_response["make"] == "Volkswagen"
-

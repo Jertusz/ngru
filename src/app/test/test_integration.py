@@ -1,14 +1,16 @@
+# 3rd party
 import pytest
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-from app.models import Manufacturer, Car, Rate
-from app.serializers import CarSerializer
+# Local
+from app.models import Car
+from app.models import Manufacturer
+from app.models import Rate
 
 
 @pytest.mark.integration
 class TestCarApi(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.manufacturer = Manufacturer(name="Volkswagen")
@@ -89,12 +91,8 @@ class TestCarApi(TestCase):
 
         assert response.status_code == 404
 
-
     def test_add_rate_out_of_bounds(self):
         api_client = APIClient()
         response = api_client.post("/rate/", {"car_id": 1, "rating": 8})
 
         assert response.status_code == 400
-
-
-
